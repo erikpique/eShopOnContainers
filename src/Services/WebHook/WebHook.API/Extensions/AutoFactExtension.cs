@@ -3,7 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace WebHook.API.ServiceCollectionExtensions
+namespace WebHook.API.Extensions
 {
     public static class AutoFactExtension
     {

@@ -191,6 +191,15 @@ services:
       - catalog.api
       - basket.api
 
+  webhook.api:
+    image: eshop/webhook.api:${TAG:-latest}
+    build:
+      context: src/Services/WebHook/WebHook.API
+      dockerfile: Dockerfile
+    depends_on:
+      - identity.api
+      - rabbitmq
+
   webstatus:
     image: eshop/webstatus:${TAG:-latest}
     build:

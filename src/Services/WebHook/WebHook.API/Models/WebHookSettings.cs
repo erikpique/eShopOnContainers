@@ -10,7 +10,7 @@
 
         public string EventBusPassword { get; set; }
 
-        public int EventBusRetryCount { get; set; }
+        public int EventBusRetryCount { get; set; } = 5;
 
         public string SubscriptionClientName { get; set; }
     }

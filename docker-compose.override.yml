@@ -255,6 +255,22 @@ services:
     ports:
       - "5112:80"
 
+  webhook.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - identityUrl=http://identity.api              #Local: You need to open your local dev-machine firewall at range 5100-5110.
+      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
+      - EventBusUserName=${ESHOP_SERVICE_BUS_USERNAME}
+      - EventBusPassword=${ESHOP_SERVICE_BUS_PASSWORD}      
+      - AzureServiceBusEnabled=False
+      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - UseLoadTest=${USE_LOADTEST:-False}
+    ports:
+      - "5113:80"   # Important: In a production environment your should remove the external port (5103) kept here for microservice debugging purposes. 
+                    # The API Gateway redirects and access through the internal port (80). 
+
   webstatus:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

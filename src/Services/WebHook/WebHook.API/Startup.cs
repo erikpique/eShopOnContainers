@@ -4,25 +4,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using WebHook.API.ServiceCollectionExtensions;
+using WebHook.API.Extensions;
 
 namespace WebHook.API
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            return services.AddMvc()
+            return services
+                .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Latest)
                 .Services
-                .WebHookSettingsConfigure(Configuration)
+                .AddSettings(Configuration)
                 .AddEventBus(Configuration)
                 .AddContainer();
         }
@@ -39,6 +40,7 @@ namespace WebHook.API
             }
 
             app.UseHttpsRedirection()
+                .UseCors()
                 .UseMvc()
                 .UseEventBusSubscribers();
         }

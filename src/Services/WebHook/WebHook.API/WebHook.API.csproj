@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.1" />
+    <PackageReference Include="Microsoft.AspNet.WebHooks.Receivers" Version="1.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
@@ -18,7 +19,7 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\EventBusServiceBus\EventBusServiceBus.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\EventBus\EventBus.csproj" />
-    <ProjectReference Include="..\..\Ordering\Ordering.API\Ordering.API.csproj" />
+    <ProjectReference Include="..\..\Catalog\Catalog.API\Catalog.API.csproj" />
   </ItemGroup>
 
 </Project>
